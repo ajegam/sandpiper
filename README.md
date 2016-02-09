@@ -4,6 +4,7 @@
 <meta http-equiv=Content-Type content="text/html; charset=unicode">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
 <title>JIRA to JitBit Migration using REST APIs</title>
+
 </head>
 
 <body lang=EN-US link=blue vlink=purple>
@@ -15,33 +16,33 @@
 <p class=MsoNormal><i><span style='font-size:10.0pt'>Feb 7, 2016</span></i></p>
 
 <p>One of the client's I worked with was a startup that was using JIRA for
-their internal issue tracking system. After about 1+ years of usage they found that
-JIRA turned out to be more expensive and overly complicated for their needs.
-They just needed a simple issue tracking (help desk) system. Their end-users
-found JIRA to be overly complicated for what they wanted to do.</p>
+their internal issue tracking system. After about 1+ years of usage they found
+that JIRA turned out to be more expensive and overly complicated for their
+needs. They just needed a simple issue tracking (help desk) system. Their
+end-users found JIRA to be overly complicated for what they wanted to do.</p>
 
 <p>Towards the end of Jan 2016, they decided to move to another issue tracking
 system called &quot;JitBit&quot;. They found JitBit's pricing model to be very
 appealing. JitBit is priced based on &quot;agents&quot; and not the actual
-number of users logging the tickets. Agents or Technicians are users in the support
-team. &nbsp; This gave them a significant savings over JIRA.  In addition, the
-users found JitBit’s simple interface easy to use.  </p>
+number of users logging the tickets. Agents or Technicians are users in the
+support team. &nbsp; This gave them a significant savings over JIRA.&nbsp; In
+addition, the users found JitBit’s simple interface easy to use.&nbsp; </p>
 
 <p>As part of this move to JitBit the client wanted to migrate tickets from
 JIRA to JitBit. The client had over 3000+ issues to migrate and we had to do
 the migration for several JIRA projects. So we wanted to someway automate this
 migration. We wrote a small Python program that did the migration. The rest of
-this document describes the process we followed to migrate data from JIRA to
-JitBit and also a short description on the Python program.</p>
+this document describes the process we followed to migrate data from JIRA to JitBit
+and also a short description on the Python program.</p>
 
 <h2>Requirements</h2>
 
-<ol start=1 type=1>
+<ol style='margin-top:0in' start=1 type=1>
  <li class=MsoNormal>Migrate only a select set of issues from JIRA to JitBit.
      These would be selected using a JIRA filter. By changing the JIRA filter
      you can decide what issues get migrated.</li>
  <li class=MsoNormal>The following fields are to be migrated: </li>
- <ol start=1 type=1>
+ <ol style='margin-top:0in' start=1 type=1>
   <li class=MsoNormal>Summary</li>
   <li class=MsoNormal>Body</li>
   <li class=MsoNormal>Priority</li>
@@ -69,16 +70,16 @@ JitBit and also a short description on the Python program.</p>
 import option. &nbsp;This was probably the simplest way to do the migration.
 However, we ran into the following issues:</p>
 
-<ul type=square>
+<ul style='margin-top:0in' type=square>
  <li class=MsoNormal>Comments </li>
- <ul type=square>
+ <ul style='margin-top:0in' type=square>
   <li class=MsoNormal>The list display in JIRA does not display comments. There
       are JIRA plug-ins that can be used to display comments in the search and
       then export them. But this needed additional configuration in JIRA which
       we did not want to do. </li>
  </ul>
  <li class=MsoNormal>Attachments </li>
- <ul type=square>
+ <ul style='margin-top:0in' type=square>
   <li class=MsoNormal>Not possible using the CSV approach</li>
  </ul>
 </ul>
@@ -98,8 +99,8 @@ APIs Used (<a href="https://www.jitbit.com/helpdesk/helpdesk-api/">https://www.j
 
 <div>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none'>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
  <tr>
   <td valign=top style='border:double windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=center style='text-align:center'><b>API</b></p>
@@ -141,8 +142,8 @@ APIs Used (<a href="https://www.jitbit.com/helpdesk/helpdesk-api/">https://www.j
   <p style='margin:0in;margin-bottom:.0001pt'>We set all our tickets to the
   &quot;Normal&quot; status after migration.</p>
   <p style='margin:0in;margin-bottom:.0001pt'>We did not care to preserve the
-  &quot;Created By&quot; user during the migration. All the issues would show
-  the same created by user.</p>
+  &quot;Created By&quot; user during the migration. All the issues would show the
+  same created by user.</p>
   <p style='margin:0in;margin-bottom:.0001pt'>You can pass a “behalf-of” user
   id to this POST. This can be used to create a ticket on behalf of someone
   else. Although we did not use this feature the code supports this.</p>
@@ -152,7 +153,7 @@ APIs Used (<a href="https://www.jitbit.com/helpdesk/helpdesk-api/">https://www.j
   padding:0in 5.4pt 0in 5.4pt'>
   <p style='margin:0in;margin-bottom:.0001pt'>The API did not have</p>
   <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-  margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </span>Created Date</p>
   </td>
  </tr>
@@ -172,12 +173,10 @@ APIs Used (<a href="https://www.jitbit.com/helpdesk/helpdesk-api/">https://www.j
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p style='margin:0in;margin-bottom:.0001pt'>The API did not have</p>
-  <p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'>-<span
-  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span>Created Date</p>
-  <p class=MsoListParagraphCxSpLast style='text-indent:-.25in'>-<span
-  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span>Comment By</p>
+  <p class=MsoListParagraph style='text-indent:-.25in'>-<span style='font-size:
+  7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Created Date</p>
+  <p class=MsoListParagraph style='text-indent:-.25in'>-<span style='font-size:
+  7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Comment By</p>
   </td>
  </tr>
  <tr>
@@ -261,8 +260,8 @@ APIs Used (<a href="https://www.jitbit.com/helpdesk/helpdesk-api/">https://www.j
 id="JIRAtoJitBitMigrationusingRESTAPIs-JIRAAPIsUsed(https://docs.atlassian.com/jira/REST/latest/)">JIRA
 APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.atlassian.com/jira/REST/latest/</a>)</h3>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none'>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
  <tr>
   <td width=390 valign=top style='width:233.75pt;border:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
@@ -314,20 +313,20 @@ APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.a
  <tr>
   <td width=390 valign=top style='width:233.75pt;border:double windowtext 1.5pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;font-weight:normal'>Filter URL</span></h3>
+  <p class=MsoNormal>Filter URL</p>
   </td>
   <td width=591 valign=top style='width:354.85pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;font-weight:normal'>We use the URL got from
-  the call above and then make another call to get all the issues that we are
-  going to migrate.  The call to the filter URL had two limitations – 1. It
-  returned all the columns and 2. It returned only the first 50 rows. Appending
-  the following parameter at the end of the URL fixed these two problems:</span></h3>
-  <h3><span style='font-size:10.0pt;font-family:"Courier New";color:black;
-  font-weight:normal'>fields=key&amp;maxResults=10000</span></span></h3>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>This call
-  will return a list of all the issues that we have to migrate.</span></h3>
+  <p class=MsoNormal>We use the URL got from the call above and then make
+  another call to get all the issues that we are going to migrate.&nbsp; The
+  call to the filter URL had two limitations – 1. It returned all the columns
+  and 2. It returned only the first 50 rows. Appending the following parameter
+  at the end of the URL fixed these two problems:</p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New";
+  color:black'>fields=key&amp;maxResults=10000</span></p>
+  <p class=MsoNormal><span style='color:black'>This call will return a list of
+  all the issues that we have to migrate.</span></p>
   </td>
  </tr>
  <tr>
@@ -344,28 +343,28 @@ APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.a
   <td width=591 valign=top style='width:354.85pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>Given an
-  issue id this will return a JSON will all the details (issue_info)</span></h3>
+  <p class=MsoNormal><span style='color:black'>Given an issue id this will
+  return a JSON will all the details (issue_info)</span></p>
   </td>
  </tr>
  <tr>
   <td width=390 valign=top style='width:233.75pt;border:double windowtext 1.5pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>Comments</span></span></h3>
+  <p class=MsoNormal><span style='color:black'>Comments</span></p>
   </td>
   <td width=591 valign=top style='width:354.85pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>We get all
-  the comments by iterating over the issue info object. JitBit API does not
-  provide for passing a comment author. So we appended the comment author to
-  the beginning of each comment.</span></span></h3>
+  <p class=MsoNormal><span style='color:black'>We get all the comments by
+  iterating over the issue info object. JitBit API does not provide for passing
+  a comment author. So we appended the comment author to the beginning of each
+  comment.</span></p>
   </td>
  </tr>
  <tr>
   <td width=390 valign=top style='width:233.75pt;border:double windowtext 1.5pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>Attachments</span></span></h3>
+  <p class=MsoNormal><span style='color:black'>Attachments</span></p>
   </td>
   <td width=591 valign=top style='width:354.85pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
@@ -381,27 +380,22 @@ APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.a
  <tr>
   <td width=390 valign=top style='width:233.75pt;border:double windowtext 1.5pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-  <h3 style='margin:0in;margin-bottom:.0001pt'><span style='font-size:12.0pt;
-  color:black;font-weight:normal'><a
+  <p class=MsoNormal><a
   href="https://docs.atlassian.com/jira/REST/latest/#api/2/issue"><span
-  style='color:black;text-decoration:none'>api/2/issue</span></a></span></h3>
-  <h3 style='margin:0in;margin-bottom:.0001pt;orphans: auto;text-align:start;
-  widows: 1;-webkit-text-stroke-width: 0px;word-spacing:0px'><span
-  style='font-size:12.0pt;color:black;font-weight:normal'><a
+  style='color:black;text-decoration:none'>api/2/issue</span></a></p>
+  <p class=MsoNormal><a
   href="https://docs.atlassian.com/jira/REST/latest/#api/2/issue-editIssue"><span
-  style='color:black;text-decoration:none'>Edit issue</span></a></span></h3>
-  <h3 style='margin:0in;margin-bottom:.0001pt;orphans: auto;text-align:start;
-  widows: 1;-webkit-text-stroke-width: 0px;word-spacing:0px'><span
-  style='font-size:12.0pt;color:black;font-weight:normal'>PUT&nbsp;/rest/api/2/issue/{issueIdOrKey}</span></h3>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>&nbsp;</span></h3>
+  style='color:black;text-decoration:none'>Edit issue</span></a></p>
+  <p class=MsoNormal><span style='color:black'>PUT&nbsp;/rest/api/2/issue/{issueIdOrKey}</span></p>
+  <p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
   </td>
   <td width=591 valign=top style='width:354.85pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
-  <h3><span style='font-size:12.0pt;color:black;font-weight:normal'>After
-  Migrating the issue to JitBit we then mark the &quot;Tag&quot; field in JIRA
-  to a specific value (JITBIT_MIGRATION_SUCCESS).  This is required for
-  auditing and also for restarting the program from where it last stopped.</span></span></h3>
+  <p class=MsoNormal><span style='color:black'>After Migrating the issue to
+  JitBit we then mark the &quot;Tag&quot; field in JIRA to a specific value
+  (JITBIT_MIGRATION_SUCCESS).&nbsp; This is required for auditing and also for
+  restarting the program from where it last stopped.</span></p>
   </td>
  </tr>
 </table>
@@ -412,8 +406,8 @@ APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.a
 
 <div>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none'>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
  <tr>
   <td width=209 valign=top style='width:125.1pt;border:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
@@ -557,7 +551,8 @@ APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.a
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p style='margin-top:12.0pt;margin-right:0in;margin-bottom:12.0pt;margin-left:
-  0in'>Location where attachments will be stored. Example: D:/users/xyz/projects/sandpiper/attachments</p>
+  0in'>Location where attachments will be stored. Example:
+  D:/users/xyz/projects/sandpiper/attachments</p>
   </td>
   <td width=167 valign=top style='width:100.2pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
@@ -585,8 +580,8 @@ APIs Used (<a href="https://docs.atlassian.com/jira/REST/latest/">https://docs.a
   0in'>We had a lot of attachments so, we ran the program ahead of time just
   fetching the attachments (DELETE_REFRESH). On the day of go-live we simple
   change this setting to NEW_ONLY. That way attachments were downloaded only
-  when they were missing (i.e. for new issues that were created after our download
-  run)</p>
+  when they were missing (i.e. for new issues that were created after our
+  download run)</p>
   </td>
   <td width=167 valign=top style='width:100.2pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
@@ -623,8 +618,8 @@ Side</h2>
 
 <div>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none'>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
  <tr>
   <td valign=top style='border:double windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=center style='text-align:center'><b>Item</b></p>
@@ -670,9 +665,9 @@ Side</h2>
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p style='margin-top:12.0pt;margin-right:0in;margin-bottom:12.0pt;margin-left:
-  0in'>If the migration of a particular issue fails part way through – then this
-  issues is moved to this category in JitBit. At the end of migration all
-  issues in this category can be deleted.</p>
+  0in'>If the migration of a particular issue fails part way through – then
+  this issues is moved to this category in JitBit. At the end of migration all issues
+  in this category can be deleted.</p>
   </td>
   <td width=272 valign=top style='width:163.2pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
@@ -757,66 +752,63 @@ Side</h2>
 <h2 id=JIRAtoJitBitMigrationusingRESTAPIs-ProgramNotes>Python Program Notes</h2>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>A very small Python program was written to perform the migration. &nbsp;The
-standard Python &quot;requests&quot; library (<a
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>A very small Python program was written to perform the migration.
+&nbsp;The standard Python &quot;requests&quot; library (<a
 href="http://docs.python-requests.org/en/master/">http://docs.python-requests.org/en/master/</a>)
 was used to make the API calls. &nbsp;There is other Python libraries as well
 (urllib2). &nbsp;We found the “requests” library to be much simpler to use.</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Python has a very good JIRA library (<a
 href="https://pythonhosted.org/jira/">https://pythonhosted.org/jira/</a>).
 &nbsp;However, we did not use this. Since our requirements were quite minimal
 we opted to use the &quot;requests&quot; library for all our calls.</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Uses standard Python libraries. No other downloads are required. Has
 been tested on Python 2.7.10.</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Authentication type &quot;basic_auth&quot; is used for both JIRA and
 JitBit.</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>To run:</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
-margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span>Get a copy of
-this code (folk or get a copy from GitHut at https://github.com/ajegam/sandpiper)</p>
+margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp; </span>Get a copy of this code (folk or
+get a copy from GitHut at https://github.com/ajegam/sandpiper)</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
-margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span>Setup the
-config/config.yml file</p>
+margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp; </span>Setup the config/config.yml file</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
-margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span>Execute “python
-process_data.py”</p>
+margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp; </span>Execute “python process_data.py”</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
-margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span>The class
-&quot;ProcessData&quot; in process_data.py is the orchestrating class.</p>
+margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp; </span>The class &quot;ProcessData&quot;
+in process_data.py is the orchestrating class.</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>To test</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
-margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span>The ProcessData
-class has a test_jitbit() that can be used to test if a specific issue is
-getting migrated.</p>
+margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp; </span>The ProcessData class has a
+test_jitbit() that can be used to test if a specific issue is getting migrated.</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
-margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>As with any other code use with caution and test thoroughly before
 using.</p>
 
