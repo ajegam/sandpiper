@@ -16,24 +16,24 @@
 <p class=MsoNormal><i><span style='font-size:10.0pt'>Feb 7, 2016</span></i></p>
 
 <p>One of the client's I worked with was a startup that was using JIRA for
-their internal issue tracking system. After about 1+ years of usage they found
-that JIRA turned out to be more expensive and overly complicated for their
-needs. They just needed a simple issue tracking (help desk) system. Their
-end-users found JIRA to be overly complicated for what they wanted to do.</p>
+their internal issue tracking system. After about 1+ years of usage they found that
+JIRA turned out to be more expensive and overly complicated for their needs.
+They just needed a simple issue tracking (help desk) system. Their end-users
+found JIRA to be overly complicated for what they wanted to do.</p>
 
 <p>Towards the end of Jan 2016, they decided to move to another issue tracking
 system called &quot;JitBit&quot;. They found JitBit's pricing model to be very
 appealing. JitBit is priced based on &quot;agents&quot; and not the actual
-number of users logging the tickets. Agents or Technicians are users in the
-support team. &nbsp; This gave them a significant savings over JIRA.&nbsp; In
-addition, the users found JitBit’s simple interface easy to use.&nbsp; </p>
+number of users logging the tickets. Agents or Technicians are users in the support
+team. &nbsp; This gave them a significant savings over JIRA.&nbsp; In addition,
+the users found JitBit’s simple interface easy to use.&nbsp; </p>
 
 <p>As part of this move to JitBit the client wanted to migrate tickets from
 JIRA to JitBit. The client had over 3000+ issues to migrate and we had to do
 the migration for several JIRA projects. So we wanted to someway automate this
 migration. We wrote a small Python program that did the migration. The rest of
-this document describes the process we followed to migrate data from JIRA to JitBit
-and also a short description on the Python program.</p>
+this document describes the process we followed to migrate data from JIRA to
+JitBit and also a short description on the Python program.</p>
 
 <h2>Requirements</h2>
 
@@ -142,8 +142,8 @@ APIs Used (<a href="https://www.jitbit.com/helpdesk/helpdesk-api/">https://www.j
   <p style='margin:0in;margin-bottom:.0001pt'>We set all our tickets to the
   &quot;Normal&quot; status after migration.</p>
   <p style='margin:0in;margin-bottom:.0001pt'>We did not care to preserve the
-  &quot;Created By&quot; user during the migration. All the issues would show the
-  same created by user.</p>
+  &quot;Created By&quot; user during the migration. All the issues would show
+  the same created by user.</p>
   <p style='margin:0in;margin-bottom:.0001pt'>You can pass a “behalf-of” user
   id to this POST. This can be used to create a ticket on behalf of someone
   else. Although we did not use this feature the code supports this.</p>
@@ -665,9 +665,9 @@ Side</h2>
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p style='margin-top:12.0pt;margin-right:0in;margin-bottom:12.0pt;margin-left:
-  0in'>If the migration of a particular issue fails part way through – then
-  this issues is moved to this category in JitBit. At the end of migration all issues
-  in this category can be deleted.</p>
+  0in'>If the migration of a particular issue fails part way through – then this
+  issues is moved to this category in JitBit. At the end of migration all
+  issues in this category can be deleted.</p>
   </td>
   <td width=272 valign=top style='width:163.2pt;border-top:none;border-left:
   none;border-bottom:double windowtext 1.5pt;border-right:double windowtext 1.5pt;
@@ -806,6 +806,18 @@ margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&
 margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
 style='font-size:7.0pt'>&nbsp;&nbsp; </span>The ProcessData class has a
 test_jitbit() that can be used to test if a specific issue is getting migrated.</p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
+margin-bottom:.0001pt;text-indent:-.25in'><span style='font-family:"Courier New"'>o</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp; </span>The JSON message returned by JIRA
+for each issue is quite large. It is best read using a JSON viewer/formatter.
+We used http://jsonviewer.stack.hu/ for viewing.  We ran our code using PyCharm.
+In PyCharm you can run it in “Debug” mode and put a break point in jira_api.py
+-&gt; get_issue_inf() -&gt; at the line where the “response” is returned.  You
+can they copy the value of “response” and paste it in JSON viewer.</p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
+margin-bottom:.0001pt;text-indent:-.25in'>&nbsp;</p>
 
 <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
 margin-bottom:.0001pt;text-indent:-.25in'>-<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
