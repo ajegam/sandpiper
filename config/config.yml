@@ -1,0 +1,27 @@
+---
+# config.yml
+
+jitbit_api_url: 'https://xyz.jitbit.com/helpdesk/api'
+jitbit_user: <jitbit_user>
+jitbit_pwd: ******
+# Find out the id of the category to migrate to from JitBit
+jitbit_migrate_category_id: <jitbit_migrate_category_id>
+jitbit_delete_category_id: <jitbit_delete_category_id>
+jitbit_default_assign_email: <jitbit_default_assign_email>
+
+jira_api_url: 'https://xyz.atlassian.net/rest/api/2'
+jira_user: <jira_user>
+jira_pwd: ******
+# 11701 - final
+jira_filter_id: <jira_filter_id>
+jira_tag_field: customfield_10800
+
+# Code can fetch the attachments into a folder.
+# Attachments for each issue must be under its own folder (attachments/AR-323)
+# DELETE_REFETCH -> Get data even if the key directory exists (i.e. delete and refetch)
+# NEW_ONLY -> Get data only if the key directory does not exist.
+
+fetch_attachments: NEW_ONLY
+attachment_folder: 'D:/Users/xyz/Projects/sandpiper/attachments'
+
+
