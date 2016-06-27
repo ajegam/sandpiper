@@ -65,7 +65,7 @@ class ProcessData(object):
                     continue
 
                 self.jira_api.get_attachment(key, issue_info)
-
+00
                 # Now create this issue in JitBit
                 self._migrate_to_jitbit(key, issue_info)
 
@@ -114,7 +114,7 @@ class ProcessData(object):
                 # Now create this issue in JitBit
                 self._migrate_to_jitbit(key, issue_info)
 
-        except Exception as e:
+0        except Exception as e:
             logger.critical(e.message)
             raise
 
