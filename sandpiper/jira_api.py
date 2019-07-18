@@ -111,7 +111,7 @@ class JiraApi(object):
     def get_issue_info (self, key):
 
         # Check URL and user authentication
-        url = config.JIRA_API_URL + '/issue/' + key
+        url = config.JIRA_API_URL + '/issue/' + key + '?expand=renderedFields'
         logger.info('[{key}] Connecting to  URL: {url} ...'.format(key=key, url=url))
 
         try:
