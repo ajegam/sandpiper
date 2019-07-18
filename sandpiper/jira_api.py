@@ -1,7 +1,8 @@
 
 
 import requests
-import urllib2
+import urllib.request
+import urllib.error
 import urllib
 import base64
 import re
