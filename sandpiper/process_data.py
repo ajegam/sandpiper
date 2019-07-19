@@ -65,12 +65,12 @@ class ProcessData(object):
                     continue
 
                 self.jira_api.get_attachment(key, issue_info)
-00
+
                 # Now create this issue in JitBit
                 self._migrate_to_jitbit(key, issue_info)
 
 
-            pbar.finish()
+            pbar.finish
 
         except Exception as e:
             logger.critical(e.message)
@@ -114,7 +114,7 @@ class ProcessData(object):
                 # Now create this issue in JitBit
                 self._migrate_to_jitbit(key, issue_info)
 
-0        except Exception as e:
+        except Exception as e:
             logger.critical(e.message)
             raise
 
@@ -157,7 +157,7 @@ class ProcessData(object):
             assign_to_id = self.default_assign_id
 
             # Ready to create the ticket
-            ticket_id = self.jitbit_api.post_ticket(key, category_id, subject, body, priority_id)
+            ticket_id = int(self.jitbit_api.post_ticket(key, category_id, subject, body, priority_id))
             if ticket_id > 0:
 
                 self.jitbit_api.post_set_assignee(key, ticket_id, assign_to_id)

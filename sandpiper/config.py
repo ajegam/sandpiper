@@ -34,7 +34,7 @@ NEW_ONLY = 'NEW_ONLY'
 base_dir_name = os.path.dirname(os.path.abspath(__file__))
 dir_name = base_dir_name + os.sep + '..' + os.sep + 'config'
 config_path = os.path.join(dir_name, CONFIG_FILE)
-data = ordered_load(file(config_path), yaml.SafeLoader)
+data = ordered_load(open(config_path, 'r'), yaml.SafeLoader)
 
 #  print(yaml.dump(data))
 

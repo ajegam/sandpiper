@@ -67,3 +67,7 @@ stage/doc
 stage/tmp
 stage/error
 config_dsx.yml
+
+attachments/
+.vscode/
+__pycache__
